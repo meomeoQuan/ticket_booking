@@ -1,0 +1,24 @@
+﻿@model ShowTimeVM
+
+<h1>Movie Details</h1>
+<form method="post">
+    <div>
+        <h2>@Model.Movie.Title</h2>
+        <img src="https://via.placeholder.com/200" alt="@Model.Movie.GetType" />
+        <p>@Model.Movie.Discription</p>
+
+        <!-- Display ShowTimes -->
+        <div>
+            @foreach (var showTime in Model.TimeList)
+            {
+                <a class="btn btn-dark" asp-route-showId="@showTime.ShowTimeId">@showTime.ShowTimeStart</a>
+            }
+        </div>
+
+        <!-- Display Seats as 2x2 grid -->
+ 
+
+        <a asp-action="Index">Back to List</a>
+        <button type="submit" asp-action="Book">Book</button>
+    </div>
+</form>

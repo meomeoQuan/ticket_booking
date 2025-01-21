@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Movie>   
+
+<h1 class="text-center my-4">Movie List</h1>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th class="text-center">Title</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Details</th>
+                    <th class="text-center">Show Times</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td class="text-center align-middle">
+                            <strong>@movie.Title</strong>
+                        </td>
+                        <td class="text-center align-middle">
+                            <img src="https://placehold.co/500x600" alt="@movie.Title" class="rounded img-thumbnail" style="max-width: 150px; height: auto;" />
+                        </td>
+                        <td class="text-center align-middle">
+                            <a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@movie.MovieId">
+                                <i class="bi bi-info-circle-fill"></i> Details
+                            </a>
+                        </td>
+                        <td class="text-center align-middle">
+                            <!-- Toggle Button for ShowTimes -->
+                            <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#showTimes-@movie.MovieId" aria-expanded="false" aria-controls="showTimes-@movie.MovieId">
+                                Show Times
+                            </button>
+                        </td>
+                    </tr>
+                
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
