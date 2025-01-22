@@ -13,8 +13,6 @@ namespace ticket_booking.Controllers
 
         private readonly ApplicationDbContext _db;
 
-      
-
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;

@@ -4,16 +4,21 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace ticket_booking.Models
 {
+
     public class Seat
     {
         [Key]
         public int SeatId { get; set; }
 
-        public string Row { get; set; }
-        public string Column { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string SeatNumber { get; set; }
 
-        public int SeatStatus { get; set; }
-
+        [Required]
+        [StringLength(50)]
+        [RegularExpression("Available|Booked|Pending", ErrorMessage = "Invalid Seat Status")]
+        public string SeatStatus { get; set; } = "Available";
+        [Required]
         public int RoomId { get; set; }
         [ForeignKey("RoomId")]
         [ValidateNever]

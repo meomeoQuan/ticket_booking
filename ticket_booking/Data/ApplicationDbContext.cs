@@ -10,7 +10,7 @@ namespace ticket_booking.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<ShowTime> ShowTimes { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
