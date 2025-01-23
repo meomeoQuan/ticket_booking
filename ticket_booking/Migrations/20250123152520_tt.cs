@@ -7,7 +7,7 @@
 namespace ticket_booking.Migrations
 {
     /// <inheritdoc />
-    public partial class AddLatestTodb : Migration
+    public partial class tt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,9 +46,8 @@ namespace ticket_booking.Migrations
                 {
                     SeatId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Row = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Column = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SeatStatus = table.Column<int>(type: "int", nullable: false),
+                    SeatNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    SeatStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -108,17 +107,17 @@ namespace ticket_booking.Migrations
 
             migrationBuilder.InsertData(
                 table: "Seat",
-                columns: new[] { "SeatId", "Column", "RoomId", "Row", "SeatStatus" },
+                columns: new[] { "SeatId", "RoomId", "SeatNumber", "SeatStatus" },
                 values: new object[,]
                 {
-                    { 1, "1", 1, "A", 0 },
-                    { 2, "2", 1, "A", 0 },
-                    { 3, "1", 1, "B", 0 },
-                    { 4, "2", 1, "B", 0 },
-                    { 5, "1", 2, "A", 0 },
-                    { 6, "2", 2, "A", 0 },
-                    { 7, "1", 2, "B", 0 },
-                    { 8, "2", 2, "B", 0 }
+                    { 1, 1, "A1", "Available" },
+                    { 2, 1, "A2", "Available" },
+                    { 3, 1, "A3", "Available" },
+                    { 4, 1, "A4", "Available" },
+                    { 5, 2, "B1", "Available" },
+                    { 6, 2, "B2", "Available" },
+                    { 7, 2, "B3", "Available" },
+                    { 8, 2, "B4", "Available" }
                 });
 
             migrationBuilder.InsertData(
@@ -126,8 +125,9 @@ namespace ticket_booking.Migrations
                 columns: new[] { "ShowTimeId", "MovieId", "RoomId", "ShowTimeStart" },
                 values: new object[,]
                 {
-                    { 1, 1, 1, "17:30" },
-                    { 2, 2, 2, "23:00" }
+                    { 1, 1, 1, "10:30" },
+                    { 2, 2, 1, "13:00" },
+                    { 3, 2, 2, "16:30" }
                 });
 
             migrationBuilder.CreateIndex(

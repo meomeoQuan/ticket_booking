@@ -97,19 +97,18 @@ namespace ticket_booking.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SeatId"));
 
-                    b.Property<string>("Column")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Row")
+                    b.Property<string>("SeatNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("SeatStatus")
-                        .HasColumnType("int");
+                    b.Property<string>("SeatStatus")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("SeatId");
 
@@ -121,66 +120,58 @@ namespace ticket_booking.Migrations
                         new
                         {
                             SeatId = 1,
-                            Column = "1",
                             RoomId = 1,
-                            Row = "A",
-                            SeatStatus = 0
+                            SeatNumber = "A1",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 2,
-                            Column = "2",
                             RoomId = 1,
-                            Row = "A",
-                            SeatStatus = 0
+                            SeatNumber = "A2",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 3,
-                            Column = "1",
                             RoomId = 1,
-                            Row = "B",
-                            SeatStatus = 0
+                            SeatNumber = "A3",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 4,
-                            Column = "2",
                             RoomId = 1,
-                            Row = "B",
-                            SeatStatus = 0
+                            SeatNumber = "A4",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 5,
-                            Column = "1",
                             RoomId = 2,
-                            Row = "A",
-                            SeatStatus = 0
+                            SeatNumber = "B1",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 6,
-                            Column = "2",
                             RoomId = 2,
-                            Row = "A",
-                            SeatStatus = 0
+                            SeatNumber = "B2",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 7,
-                            Column = "1",
                             RoomId = 2,
-                            Row = "B",
-                            SeatStatus = 0
+                            SeatNumber = "B3",
+                            SeatStatus = "Available"
                         },
                         new
                         {
                             SeatId = 8,
-                            Column = "2",
                             RoomId = 2,
-                            Row = "B",
-                            SeatStatus = 0
+                            SeatNumber = "B4",
+                            SeatStatus = "Available"
                         });
                 });
 
@@ -216,14 +207,21 @@ namespace ticket_booking.Migrations
                             ShowTimeId = 1,
                             MovieId = 1,
                             RoomId = 1,
-                            ShowTimeStart = "17:30"
+                            ShowTimeStart = "10:30"
                         },
                         new
                         {
                             ShowTimeId = 2,
                             MovieId = 2,
+                            RoomId = 1,
+                            ShowTimeStart = "13:00"
+                        },
+                        new
+                        {
+                            ShowTimeId = 3,
+                            MovieId = 2,
                             RoomId = 2,
-                            ShowTimeStart = "23:00"
+                            ShowTimeStart = "16:30"
                         });
                 });
 

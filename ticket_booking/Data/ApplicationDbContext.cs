@@ -29,23 +29,24 @@ namespace ticket_booking.Data
 
             // Seed data for ShowTimes
             modelBuilder.Entity<ShowTime>().HasData(
-                new ShowTime { ShowTimeId = 1, ShowTimeStart = "17:30", MovieId = 1, RoomId = 1 },
-                new ShowTime { ShowTimeId = 2, ShowTimeStart = "23:00", MovieId = 2, RoomId = 2 }
+                new ShowTime { ShowTimeId = 1, ShowTimeStart = "10:30", MovieId = 1, RoomId = 1 },
+                new ShowTime { ShowTimeId = 2, ShowTimeStart = "13:00", MovieId = 2, RoomId = 1 },
+                new ShowTime { ShowTimeId = 3, ShowTimeStart = "16:30", MovieId = 2, RoomId = 2 }
             );
 
             // Seed data for Seats with a 2x2 matrix for each room
             modelBuilder.Entity<Seat>().HasData(
-                // Room 1, ShowTime 1
-                new Seat { SeatId = 1, Row = "A", Column = "1", SeatStatus = 0, RoomId = 1,  },
-                new Seat { SeatId = 2, Row = "A", Column = "2", SeatStatus = 0, RoomId = 1, },
-                new Seat { SeatId = 3, Row = "B", Column = "1", SeatStatus = 0, RoomId = 1, },
-                new Seat { SeatId = 4, Row = "B", Column = "2", SeatStatus = 0, RoomId = 1, },
+                // Room 1, day 1
+                new Seat { SeatId = 1, SeatNumber = "A1", SeatStatus = "Available", RoomId = 1 },
+                new Seat { SeatId = 2, SeatNumber = "A2", SeatStatus = "Available", RoomId = 1 },
+                new Seat { SeatId = 3, SeatNumber = "A3", SeatStatus = "Available", RoomId = 1 },
+                new Seat { SeatId = 4, SeatNumber = "A4", SeatStatus = "Available", RoomId = 1 },
 
-                // Room 2, ShowTime 2
-                new Seat { SeatId = 5, Row = "A", Column = "1", SeatStatus = 0, RoomId = 2,  },
-                new Seat { SeatId = 6, Row = "A", Column = "2", SeatStatus = 0, RoomId = 2,  },
-                new Seat { SeatId = 7, Row = "B", Column = "1", SeatStatus = 0, RoomId = 2,  },
-                new Seat { SeatId = 8, Row = "B", Column = "2", SeatStatus = 0, RoomId = 2, }
+                // Room 2, day 1
+                new Seat { SeatId = 5, SeatNumber = "B1", SeatStatus = "Available", RoomId = 2 },
+                new Seat { SeatId = 6, SeatNumber = "B2", SeatStatus = "Available", RoomId = 2 },
+                new Seat { SeatId = 7, SeatNumber = "B3", SeatStatus = "Available", RoomId = 2 },
+                new Seat { SeatId = 8, SeatNumber = "B4", SeatStatus = "Available", RoomId = 2 }
             );
 
             // Configure foreign keys for Seat-ShowTime and Seat-Room relationships

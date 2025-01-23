@@ -6,7 +6,6 @@ namespace ticket_booking.Models
     {
         [Key]
         public int RoomId { get; set; }
-
         public int RoomCapacity { get; set; }
         public int RoomStatus { get; set; }
     }
