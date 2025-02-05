@@ -75,7 +75,7 @@ namespace ticket_booking.Controllers
             return View(showTime);
         }
 
-        public async Task<IActionResult> Chat(int chatId)
+        public async Task<IActionResult> Chatdemo(int chatId)
         {
             var messages = await _messageRepository.GetMessagesByChatIdAsync(chatId);
             return View(messages);

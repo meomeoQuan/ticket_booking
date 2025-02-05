@@ -1,0 +1,28 @@
+﻿@page
+<div id="chat-container">
+    <div id="messages-list"></div>
+    <input type="text" id="message-input" />
+    <button id="send-button">Gửi</button>
+</div>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chathub")
+        .build();
+
+    connection.on("ReceiveMessage", (user, message) => {
+        const messagesList = document.getElementById("messages-list");
+        const newMessage = document.createElement("div");
+        newMessage.innerHTML = `<strong>${user}:</strong> ${message}`;
+        messagesList.appendChild(newMessage);
+    });
+
+    document.getElementById("send-button").addEventListener("click", () => {
+        const user = prompt("Nhập tên của bạn:");
+        const message = document.getElementById("message-input").value;
+        connection.invoke("SendMessage", user, message);
+        document.getElementById("message-input").value = "";
+    });
+
+    connection.start().catch(err => console.error(err));
+</script>
