@@ -7,6 +7,10 @@ namespace ticket_booking.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<ChatMessage> ChatMessages { get; set; }
+        public DbSet<ChatUser> ChatUsers { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<ShowTime> ShowTimes { get; set; }
@@ -15,6 +19,11 @@ namespace ticket_booking.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // Seed data for Users
+            modelBuilder.Entity<User>().HasData(
+                new User { UserId = 1, Name = "User 1" },
+                new User { UserId = 2, Name = "User 2" }
+            );
             // Seed data for Movies (necessary for ShowTimes to work properly)
             modelBuilder.Entity<Movie>().HasData(
                 new Movie { MovieId = 1, Title = "Movie 1", Discription = "Description of Movie 1" },

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ticket_booking.Data;
+using ticket_booking.Hubs;
+using ticket_booking.Repositories.ChatRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSignalR();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 
 
 var app = builder.Build();
@@ -31,5 +35,16 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+app.MapHub<ChatHub>("/ConnectedHub");
+
+app.UseEndpoints(endpoints =>
+{
+    //endpoints.MapControllerRoute(
+    //    name: "default",
+    //    pattern: "{controller=Home}/{action=Index}/{id?}");//
+    //endpoints.MapHub<ChatHub>("/chatHub"); // Ánh xạ đường dẫn "/chatHub" đến ChatHub class
+    // ... các cấu hình endpoint khác
+});
 
 app.Run();
+

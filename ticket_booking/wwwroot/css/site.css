@@ -50,7 +50,59 @@ body {
     text-decoration: none;
 }
 
-    .seat:hover {
-        background-color: #007bff;
-        color: white;
-    }
+.seat:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+
+#chat-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.chat-header {
+    padding: 10px;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-title {
+    font-weight: bold;
+}
+
+.close-button {
+    cursor: pointer;
+}
+
+.chat-body {
+    padding: 10px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.input-area {
+    display: flex;
+    margin-top: 10px;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#send-button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

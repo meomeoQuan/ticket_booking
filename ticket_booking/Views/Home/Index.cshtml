@@ -37,6 +37,32 @@
                     </tr>
                 
                 }
+
+                <div id="chat-popup" style="display: none;">
+                    <div class="chat-header">
+                        <span class="chat-title">Chat với người dùng</span>
+                        <button class="close-button" onclick="closeChatPopup()">Đóng</button>
+                    </div>
+                    <div class="chat-body">
+                        <div id="messages-list"></div>
+                        <div class="input-area">
+                            <input type="text" id="message-input" />
+                            <button id="send-button">Gửi</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="open-chat-button" onclick="openChatPopup()">Mở chat</button>
+
+                <script>
+                    function openChatPopup() {
+                        document.getElementById("chat-popup").style.display = "block";
+                    }
+
+                    function closeChatPopup() {
+                        document.getElementById("chat-popup").style.display = "none";
+                    }
+                </script>
             </tbody>
         </table>
     </div>
